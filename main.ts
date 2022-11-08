@@ -1,91 +1,50 @@
+abstract class Automovil{
+    protected velocidadActual : number;
+    protected estaPrendido: boolean;
 
+    public constructor(){
+        this.velocidadActual = 0;
+        this.estaPrendido = true;
+    }
+    abstract acelerar() : void ;
 
+    public prender () : void {
+        this.estaPrendido = true;
+    }
+    
+    public apagar() : void {
+        this.estaPrendido = false;
+    }
 
-abstract class AutoDeportivo{
-   protected velocidadActual : number;
-   protected estaPrendido: boolean;
-
-   public constructor() {
-    this.velocidadActual = 0;
-    this.estaPrendido = false;
-}
-
-abstract acelerar() : void ;
-
-public prender () : void {
-    this.estaPrendido = true;
-}
-
-public apagar() : void {
-    this.estaPrendido = false;
-}
-}
-
-abstract class Camioneta  {
-   protected velocidadActual : number;
-   protected estaPrendido: boolean;
-
-   public constructor() {
-    this.velocidadActual = 0;
-    this.estaPrendido = false;
-}
-
-abstract acelerar() : void ;
-
-public prender () : void {
-    this.estaPrendido = true;
-}
-
-public apagar() : void {
-    this.estaPrendido = false;
-}
 }
 
 
-abstract class AutoCiudad {
-   protected velocidadActual : number;
-   protected estaPrendido: boolean;
-
-   public constructor() {
-       this.velocidadActual = 0;
-       this.estaPrendido = false;
-   }
-
-   abstract acelerar() : void ;
-
-   public prender () : void {
-       this.estaPrendido = true;
-   }
-
-   public apagar() : void {
-       this.estaPrendido = false;
-   }
-}
-
-class Deportivo extends AutoDeportivo  {
-
-   public acelerar(): void {
-       this.velocidadActual += 100;
-   }
-}
-class Camio extends Camioneta  {
+ class AutoDeportivo extends Automovil{
 
     public acelerar(): void {
-        this.velocidadActual += 50;
+        this.velocidadActual = 100;
     }
- }
- class Ciudad extends AutoCiudad  {
+
+}
+
+ class Camioneta extends Automovil {
 
     public acelerar(): void {
-        this.velocidadActual += 10;
+        this.velocidadActual = 50;
     }
- }
+}
 
 
-let nuevoAutoDeportivo : Deportivo = new Deportivo();
-let nuevoCamioneta : Camio = new Camio();
-let nuevoAutoCiudad : Ciudad = new Ciudad();
+ class AutoCiudad extends Automovil{
 
+    public acelerar(): void {
+        this.velocidadActual = 10;
+    }
+}
+
+let nuevoAutoCiudad :AutoCiudad = new AutoCiudad;
+let nuevoAutoDeportivo :AutoDeportivo = new AutoDeportivo;
+let nuevoCamioneta :Camioneta = new Camioneta;
 
 nuevoAutoCiudad.acelerar();
 console.log(nuevoAutoCiudad);
